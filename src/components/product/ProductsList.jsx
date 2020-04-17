@@ -65,7 +65,7 @@ class ProductsList extends Component{
     render(){
         const { state, props } = this;
         if(props.products.length === 0){
-            return <div>Nenhum produto encontrado</div>
+            return <div className="products__not-found">Nenhum produto encontrado</div>
         }
         return(
             <div className="products">

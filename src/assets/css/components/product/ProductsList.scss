@@ -2,6 +2,9 @@
 @import "../../colors";
 
 .products{
+    &__not-found{
+
+    }
     &__layout{
         background: {
             color: lighten($grey-color-0, 7)

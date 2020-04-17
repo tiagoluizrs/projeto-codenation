@@ -10,6 +10,7 @@
   flex-direction: column;
   overflow: hidden;
   margin-bottom: 1.875em;
+  width: 100%;
 }
 .products .product__image {
   width: 100%;
