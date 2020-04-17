@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import './Sidenav.css';
+
 import SearchBar from "./SearchBar";
 import ProductList from "./product/ProductList";
 

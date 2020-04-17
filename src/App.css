@@ -1,1 +1,76 @@
-@import "assets/css/normalize.css";
+@import "normalize.css";
+
+*{
+    transition: all 0.3s ease-out;
+    box-sizing: border-box;
+}
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    padding-top: 56px;
+    background-color: #FAFAFA;
+}
+
+figure{
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #F2F2F2;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #4D4D4D;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+    border-radius: 10px;
+}
+
+button{
+    cursor: pointer;
+}
+
+a, a:visited{
+    color: #fff;
+}
+
+a:hover, a:active{
+    color: #333333
+}
+
+.container{
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        max-width: 768px;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .container{
+        max-width: 960px;
+    }
+}

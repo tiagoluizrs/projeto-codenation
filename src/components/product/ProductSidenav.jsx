@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './ProductSidenav.css';
 
 class ProductSidenav extends Component{
     render(){
