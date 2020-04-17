@@ -38,6 +38,10 @@ figure{
 
 button{
     cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
 }
 
 a, a:visited{
@@ -62,15 +66,52 @@ a:hover, a:active{
     align-items: center;
     justify-content: space-between;
 }
+.row--flexstart{
+    justify-content: flex-start;
+}
+
+.column {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.column__small--12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.column__small--6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.mt-2{
+    margin-top: 1em;
+}
 
 @media screen and (min-width: 768px) {
     .container{
         max-width: 768px;
+    }
+
+    .column__medium--6 {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
 
 @media screen and (min-width: 960px) {
     .container{
         max-width: 960px;
+    }
+    .column{
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .column__large--4 {
+        flex: 0 0 25%;
+        max-width: 25%;
     }
 }

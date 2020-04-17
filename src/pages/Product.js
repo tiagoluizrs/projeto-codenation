@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 
 class Product extends Component{
-    // constructor(props) {
-    //     super(props);
-    // }
 
     render(){
-        const {match} = this.props;
+        const { props } = this,
+              { match } = props;
 
         return(
             <div>

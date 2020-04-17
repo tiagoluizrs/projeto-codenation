@@ -10,18 +10,19 @@ class TopBar extends Component{
             <header className="topbar">
                 <div className="container">
                     <div className="row">
-                        <a href="/" className="topbar__logo">
-                            <img src={ logo } alt="Logo Fashionista - Topo do site" />
-                        </a>
-
-                        <div className="topbar__buttons">
-                            <button type="button" className="topbar__button">
-                                <FontAwesomeIcon icon={faSearch} />
-                            </button>
-                            <button type="button" className="topbar__button">
-                                <FontAwesomeIcon icon={faShoppingBag} />
-                                <span className="topbar__badge topbar__badge--danger">3</span>
-                            </button>
+                        <div className="column column__small--12">
+                            <a href="/" className="topbar__logo">
+                                <img src={ logo } alt="Logo Fashionista - Topo do site" />
+                            </a>
+                            <div className="topbar__buttons">
+                                <button type="button" className="topbar__button">
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </button>
+                                <button type="button" className="topbar__button">
+                                    <FontAwesomeIcon icon={faShoppingBag} />
+                                    <span className="topbar__badge topbar__badge--danger">3</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

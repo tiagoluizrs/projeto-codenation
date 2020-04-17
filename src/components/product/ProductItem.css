@@ -1,3 +1,32 @@
-
+/* Main > Filmes */
+.products {
+  padding: 1.875em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.products .product__item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 1.875em;
+}
+.products .product__image {
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+}
+.products .product__image img {
+  width: 100%;
+}
+.products .product__description {
+  padding: 0.625em;
+}
+.products .product__name {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+}
 
 /*# sourceMappingURL=ProductItem.css.map */

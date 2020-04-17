@@ -8,30 +8,39 @@ import Product from "./pages/Product";
 import TopBar from "./components/TopBar";
 import Sidenav from "./components/Sidenav";
 
-export class App extends Component{
-  render(){
-      return (
-          <div className="App">
-              <Router>
-                  <Link to={'/'} >
-                      Home
-                  </Link>
-                  <Link to={'/product'} >
-                      Produto
-                  </Link>
+import * as ProductActions from './data/actions/ProductActions';
 
-                  <TopBar />
-                  <Sidenav />
-                  <Suspense fallback={<div>Loading...</div>} >
-                      <Route path={'/'} exact component={(props) => <Home {...props} />} />
-                      <Route path={'/product/:id'} component={(props) => <Product {...props} />} />
-                  </Suspense>
-              </Router>
-          </div>
-      );
-  }
+export class App extends Component{
+    componentDidMount(){
+        this.props.dispatch(ProductActions.list());
+    }
+
+    render(){
+        return (
+            <div className="App">
+                <Router>
+                    <Link to={'/'} >
+                      Home
+                    </Link>
+                    <Link to={'/product'} >
+                      Produto
+                    </Link>
+
+                    <TopBar />
+                    <Sidenav />
+                    <Suspense fallback={<div>Loading...</div>} >
+                        <Route path={'/'} exact component={(props) => <Home {...props} />} />
+                        <Route path={'/product/:id'} component={(props) => <Product {...props} />} />
+                    </Suspense>
+                </Router>
+            </div>
+        );
+    }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+    productList: state.ProductReducer
+})
+
 
 export default connect(mapStateToProps)(App);

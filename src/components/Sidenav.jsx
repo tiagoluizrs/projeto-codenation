@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import './Sidenav.css';
 
 import SearchBar from "./SearchBar";
-import ProductList from "./product/ProductList";
+import ProductsList from "./product/ProductsList";
 
 class Sidenav extends Component{
     render(){
         return(
             <div>
                 <SearchBar />
-                <ProductList />
+                {/*<ProductsList />*/}
             </div>
         )
     }

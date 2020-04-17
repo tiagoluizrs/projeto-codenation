@@ -1,2 +1,35 @@
 @import "../../variables";
 @import "../../colors";
+
+/* Main > Filmes */
+.products{
+    padding: ($tam-10 * 3) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .product{
+        &__item{
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            margin-bottom: $tam-10 * 3;
+        }
+        &__image{
+            width: 100%;
+            background-color: #fff;
+            position: relative;
+            img{
+                width: 100%;
+            }
+        }
+        &__description{
+            padding: $tam-10;
+        }
+        &__name{
+            font-size: $font-13;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,13 +1,20 @@
 import React, {Component} from "react";
-import ProductList from "../components/product/ProductList";
+import ProductsList from "../components/product/ProductsList";
 
 class Home extends Component{
+    static defaultProps = {
+        productList: [],
+    }
+
+    constructor(props){
+        super(props);
+    }
+
     render(){
+        const { props } = this;
         return(
-            <div>
-                Página home
-                <ProductList />
-            </div>
+            // <ProductsList products={props.productList}/>
+            <ProductsList />
         )
     }
 }
