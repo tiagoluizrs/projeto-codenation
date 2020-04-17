@@ -92,6 +92,12 @@ a:hover, a:active{
 .mt-2{
     margin-top: 1em;
 }
+.pr-0{
+    padding-right: 0;
+}
+.pl-0{
+    padding-left: 0;
+}
 
 @media screen and (min-width: 728px) {
     .container{

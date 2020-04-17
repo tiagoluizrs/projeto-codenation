@@ -13,8 +13,8 @@ class Home extends Component{
     render(){
         const { props } = this;
         return(
-            <ProductsList products={props.productList}/>
-            // <ProductsList />
+            // <ProductsList products={props.productList}/>
+            <ProductsList />
         )
     }
 }

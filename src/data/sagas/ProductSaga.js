@@ -14,6 +14,6 @@ function* watchListAll(){
 
 export default function* ProductSaga(){
     yield all([
-        watchListAll(),
+        watchListAll()
     ])
 }

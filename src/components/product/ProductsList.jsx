@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './ProductsList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThList, faThLarge } from '@fortawesome/free-solid-svg-icons'
+import { faThList, faThLarge, faSearchLocation } from '@fortawesome/free-solid-svg-icons'
 import ProductItem from "./ProductItem";
 
 class ProductsList extends Component{
@@ -18,7 +18,7 @@ class ProductsList extends Component{
                     "37",
                     "38"
                 ],
-                "id": "1587134971941"
+                "id": "15871349719412   "
             },
             {
                 "image": "https://i.pinimg.com/474x/f9/ec/a0/f9eca058c6c9e619cf10d48bdf4b3238--folk.jpg",
@@ -65,17 +65,33 @@ class ProductsList extends Component{
     render(){
         const { state, props } = this;
         if(props.products.length === 0){
-            return <div className="products__not-found">Nenhum produto encontrado</div>
+            return (
+                <div className="products">
+                    <div className="container">
+                        <div className="row">
+                            <div className="products__not-found">
+                                <FontAwesomeIcon icon={faSearchLocation}/>
+                                <p>Nenhum produto encontrado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
         }
         return(
-            <div className="products">
+            <main className="products">
                 <div className="container">
                     <div className="row">
                         <div className="column column__small--12">
                             <div className="products__layout">
-                                <button type="button" onClick={ this.changeColumn }>
-                                    <FontAwesomeIcon icon={state.icon}/>
-                                </button>
+                                <div className="column column__small--6">
+                                    <p>{ props.products.length } itens</p>
+                                </div>
+                                <div className="column column__small--6 pr-0">
+                                    <button type="button" onClick={ this.changeColumn }>
+                                        <FontAwesomeIcon icon={state.icon}/>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,7 +104,7 @@ class ProductsList extends Component{
                         }
                     </div>
                 </div>
-            </div>
+            </main>
         )
     }
 }
