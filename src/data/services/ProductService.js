@@ -4,5 +4,8 @@ const endpoint = 'product';
 export const ProductService = {
     list(){
         return ApiService.get(endpoint);
+    },
+    byId(id){
+        return ApiService.get(`${endpoint}?id=${id}`);
     }
 }

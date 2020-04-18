@@ -6,34 +6,7 @@ import ProductItem from "./ProductItem";
 
 class ProductsList extends Component{
     static defaultProps = {
-        products: [
-            {
-                "image": "https://i.pinimg.com/474x/f9/ec/a0/f9eca058c6c9e619cf10d48bdf4b3238--folk.jpg",
-                "name": "Regata Alcinha Folk",
-                "price": 99.9,
-                "status": 2,
-                "promotional_price": 89.99,
-                "sizes": [
-                    "36",
-                    "37",
-                    "38"
-                ],
-                "id": "15871349719412   "
-            },
-            {
-                "image": "https://i.pinimg.com/474x/f9/ec/a0/f9eca058c6c9e619cf10d48bdf4b3238--folk.jpg",
-                "name": "Regata Alcinha Folk",
-                "price": 99.9,
-                "status": 2,
-                "promotional_price": 89.99,
-                "sizes": [
-                    "36",
-                    "37",
-                    "38"
-                ],
-                "id": "1587134971941"
-            }
-        ],
+        productList: [],
     }
 
     constructor(props){
@@ -64,7 +37,7 @@ class ProductsList extends Component{
 
     render(){
         const { state, props } = this;
-        if(props.products.length === 0){
+        if(props.productList.length === 0){
             return (
                 <div className="products">
                     <div className="container">
@@ -85,10 +58,10 @@ class ProductsList extends Component{
                         <div className="column column__small--12">
                             <div className="products__layout">
                                 <div className="column column__small--6">
-                                    <p>{ props.products.length } itens</p>
+                                    <p>{ props.productList.length } itens</p>
                                 </div>
                                 <div className="column column__small--6 pr-0">
-                                    <button type="button" onClick={ this.changeColumn }>
+                                    <button type="button" id="changeColumn" onClick={ this.changeColumn }>
                                         <FontAwesomeIcon icon={state.icon}/>
                                     </button>
                                 </div>
@@ -97,7 +70,7 @@ class ProductsList extends Component{
                     </div>
                     <div className="row row--flexstart">
                         {
-                            props.products.map(product => <ProductItem
+                            props.productList.map(product => <ProductItem
                                 key={product.id}
                                 product={product}
                                 columns={state.columns}/>)

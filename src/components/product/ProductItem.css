@@ -20,14 +20,28 @@
 .products .product__image img {
   width: 100%;
 }
+.products .product__percent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  padding: 2px 4px;
+  font-size: 0.6875rem;
+  background-color: #333333;
+}
 .products .product__description {
+  text-align: center;
   padding: 0.625em;
 }
 .products .product__name {
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
   text-transform: uppercase;
+}
+.products .product__price {
+  font-weight: 400;
+  margin-top: 0.3125em;
 }
 
 /*# sourceMappingURL=ProductItem.css.map */

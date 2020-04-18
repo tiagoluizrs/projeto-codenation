@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import './TopBar.css';
 import logo from '../assets/img/logo.png';
+import { Channel } from "../data/services/EventEmitter";
 
 class TopBar extends Component{
     static defaultProps = {
@@ -11,6 +12,26 @@ class TopBar extends Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            productsOnCart: 0
+        }
+        this.verifyCartQtd = this.verifyCartQtd.bind(this);
+    }
+
+    componentDidMount() {
+        this.verifyCartQtd();
+        Channel.on('verifyCartQtd', this.verifyCartQtd);
+    }
+
+    componentWillUnmount() {
+        Channel.unsubscribe('verifyCartQtd', this.verifyCartQtd);
+    }
+
+    verifyCartQtd(){
+        let productsOnCart = JSON.parse(localStorage.getItem('products'))
+        if(productsOnCart !== undefined && productsOnCart !== null){
+            this.setState({productsOnCart: productsOnCart.length});
+        }
     }
 
     toggleSideNav(type){
@@ -19,6 +40,7 @@ class TopBar extends Component{
     }
 
     render(){
+        const { state } = this;
         return(
             <header className="topbar">
                 <div className="container">
@@ -33,7 +55,9 @@ class TopBar extends Component{
                                 </button>
                                 <button type="button" className="topbar__button" onClick={ this.toggleSideNav.bind(this, 2) }>
                                     <FontAwesomeIcon icon={faShoppingBag} />
-                                    <span className="topbar__badge topbar__badge--danger">3</span>
+                                    {
+                                        state.productsOnCart > 0 ? <span className="topbar__badge topbar__badge--danger">{state.productsOnCart}</span> : ''
+                                    }
                                 </button>
                             </div>
                         </div>

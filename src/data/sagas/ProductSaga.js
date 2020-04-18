@@ -12,8 +12,19 @@ function* watchListAll(){
     yield takeLatest(ProductActions.PRODUCT_LIST, listAll);
 }
 
+function* listItem(action){  // fixed
+    const id = action.id
+    const productItem = yield ProductService.byId(id);
+    yield put(ProductActions.listItemResponse(productItem))
+}
+
+function* watchListItem(){
+    yield takeLatest(ProductActions.PRODUCT_ITEM, listItem);
+}
+
 export default function* ProductSaga(){
     yield all([
-        watchListAll()
+        watchListAll(),
+        watchListItem()
     ])
 }

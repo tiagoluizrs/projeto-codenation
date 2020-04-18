@@ -1,4 +1,5 @@
 @import "normalize.css";
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap";
 
 *{
     transition: all 0.3s ease-out;
@@ -70,7 +71,12 @@ a:hover, a:active{
     justify-content: flex-start;
 }
 
+.flex--column{
+    flex-direction: column;
+}
+
 .column {
+    float: left;
     position: relative;
     width: 100%;
     padding-right: 15px;

@@ -16,7 +16,9 @@ export class App extends Component{
 
         this.state = {
             title: '',
-            sideStatus: 'sidenav--hide'
+            sideStatus: 'sidenav--hide',
+            type: 3,
+            products: []
         }
         this.toggleSideNav = this.toggleSideNav.bind(this);
     }
@@ -31,21 +33,27 @@ export class App extends Component{
             case 1:
             data = {
                 'title': 'Buscar Produtos',
-                'sideStatus': ''
+                'sideStatus': '',
+                type,
+                products: []
             }
             break;
 
             case 2:
             data = {
                 'title': 'Sacola',
-                'sideStatus': ''
+                'sideStatus': '',
+                type,
+                products: JSON.parse(localStorage.getItem('products')),
             }
             break;
 
             case 3:
             data = {
                 'title': '',
-                'sideStatus': 'sidenav--hide'
+                'sideStatus': 'sidenav--hide',
+                type,
+                products: []
             }
             break;
         }
@@ -58,10 +66,10 @@ export class App extends Component{
             <div className="App">
                 <Router>
                     <TopBar toggleSideNav={ this.toggleSideNav }/>
-                    <Sidenav title={state.title} sideStatus={state.sideStatus} toggleSideNav={ this.toggleSideNav }/>
-                    <Suspense fallback={<div>Loading...</div>} >
-                        <Route path={'/'} exact component={(props) => <Home {...props} />} />
-                        <Route path={'/product/:id'} component={(props) => <Product {...props} />} />
+                    <Sidenav products={ state.products } type={state.type} title={state.title} sideStatus={state.sideStatus} toggleSideNav={ this.toggleSideNav }/>
+                    <Suspense fallback={<div>Carregando...</div>} >
+                        <Route path={'/'} exact component={Home} />
+                        <Route path={'/product/:id'} component={Product} />
                     </Suspense>
                 </Router>
             </div>

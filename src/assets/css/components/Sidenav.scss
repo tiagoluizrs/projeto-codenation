@@ -4,19 +4,66 @@
 .sidenav{
     width: 100%;
     height: 100%;
-    background: #fff;
-    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 1;
     position: fixed;
+    z-index: 3;
     top: 0;
     right: 0;
+    transition: 1s ease-out opacity;
+    &__right{
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
     &--hide{
+        opacity: 0;
         right: -100%;
+        .sidenav__right{
+            right: -100%;
+        }
+    }
+    &__header{
+        width: 100%;
+        padding: 5px 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        p{
+            width: calc(100% - 40px);
+            text-indent: -20px;
+            text-align: center;
+            margin: 0;
+            line-height: 40px;
+            font:{
+                weight: 700;
+                size: $font-14;
+            };
+        }
+    }
+    &__button{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font:{
+            size: 1.2em;
+        };
     }
 }
 
 
 @media screen and (min-width: 728px) {
     .sidenav{
-        max-width: 350px;
+        &__right{
+            max-width: 350px;
+        }
     }
 }

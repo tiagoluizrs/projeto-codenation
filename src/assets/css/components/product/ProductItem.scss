@@ -23,14 +23,34 @@
                 width: 100%;
             }
         }
+        &__percent{
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #fff;
+            padding: 2px 4px;
+            font:{
+                size: $font-11;
+            };
+            background:{
+                color: $primary-color;
+            };
+        }
         &__description{
+            text-align: center;
             padding: $tam-10;
         }
         &__name{
             font-size: $font-13;
-            font-weight: 800;
+            font-weight: 700;
             margin: 0;
             text-transform: uppercase;
+        }
+        &__price{
+            font-weight: 400;
+            margin:{
+                top: $tam-5;
+            };
         }
     }
 }

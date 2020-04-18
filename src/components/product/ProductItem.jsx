@@ -20,12 +20,16 @@ class ProductItem extends Component{
                 <div className="product__item">
                     <a href={ '/product/' + product.id } className="product__link">
                         <figure className="product__image">
+                            {product.promotional ? (
+                                <span className="product__percent">- {product.promotionalPercent}%</span>
+                            ) : ('')}
                             <img src={ product.image } alt=""/>
                         </figure>
                     </a>
                     <div className="product__description">
                         <h3 className="product__name">{ product.name }</h3>
-                        <p className="product__price">{ product.price }</p>
+                        <p className="product__price">
+                            R$ { product.price }</p>
                     </div>
                 </div>
             </div>
