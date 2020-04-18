@@ -3,7 +3,96 @@
 
 
 .product-sidenav{
+    padding: 0 $tam-16;
+    overflow: auto;
+    height: calc(100vh - 108px);
     &__item{
-
+        width: 100%;
+        display: block;
+        float: left;
+        padding: $tam-10 $tam-5;
+        border:{
+            bottom: 1px solid $grey-color-0;
+        }
+    }
+    &__image{
+        width: 100%;
+        max-width: 25%;
+        float: left;
+        img{
+            width: 100%;
+        }
+        button{
+            color: $danger-color-0;
+            padding: $tam-5 0;
+            margin: $tam-5 0 0;
+            font:{
+              size: $font-12;
+            };
+        }
+    }
+    &__description{
+        max-width: 50%;
+        width: 100%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        h5{
+            margin: 0;
+        }
+        p{
+            margin-bottom: 5px;
+            color: lighten($grey-color-1, 20);
+            font: {
+                size: $font-11;
+                weight: 600;
+            };
+        }
+    }
+    &__quantity{
+        margin:{
+            top: $tam-5;
+        };
+        span{
+            width: 30px;
+            display: inline-block;
+            text-align: center;
+        }
+        button{
+            width: 25px;
+            height: 25px;
+            line-height: 12.5px;
+            font-size: $font-12;
+            text-align: center;
+            color: $primary-color;
+            background-color: transparent;
+            border: 1px solid $primary-color;
+            &:hover{
+                background-color: $primary-color;
+                color: #fff;
+            }
+        }
+    }
+    &__price{
+        width: 100%;
+        max-width: 25%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        p{
+            font-weight: 700;
+            text-align: right;
+            &:first-child{
+                margin: 0;
+                font-size: $font-14;
+            }
+            &:last-child{
+                margin: {
+                    top:$tam-10
+                };
+                color: lighten($grey-color-1, 20);
+                font-size: $font-11;
+            }
+        }
     }
 }

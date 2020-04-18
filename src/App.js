@@ -9,6 +9,7 @@ import TopBar from "./components/TopBar";
 import Sidenav from "./components/Sidenav";
 
 import * as ProductActions from './data/actions/ProductActions';
+import {Channel} from "./data/services/EventEmitter";
 
 export class App extends Component{
     constructor(props){
@@ -21,14 +22,21 @@ export class App extends Component{
             products: []
         }
         this.toggleSideNav = this.toggleSideNav.bind(this);
+        this.updateState = this.updateState.bind(this);
     }
 
     componentDidMount(){
         this.props.dispatch(ProductActions.list());
+        Channel.on('updateState', this.updateState);
+    }
+
+    componentWillUnmount() {
+        Channel.unsubscribe('updateState', this.updateState);
     }
 
     toggleSideNav(type){
-        var data = {}
+        var data = {},
+            products = JSON.parse(localStorage.getItem('products'));
         switch (type) {
             case 1:
             data = {
@@ -44,7 +52,7 @@ export class App extends Component{
                 'title': 'Sacola',
                 'sideStatus': '',
                 type,
-                products: JSON.parse(localStorage.getItem('products')),
+                products: products === null || products === undefined ? [] : products,
             }
             break;
 
@@ -58,6 +66,11 @@ export class App extends Component{
             break;
         }
         this.setState(data);
+    }
+
+    updateState(){
+        let products = JSON.parse(localStorage.getItem('products'));
+        this.setState({products});
     }
 
     render(){

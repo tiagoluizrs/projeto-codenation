@@ -1,4 +1,4 @@
-const url = 'http://localhost:3002/api/codenation-ecommerce/';
+const url = 'http://192.168.0.40:3002/api/codenation-ecommerce/';
 
 export const ApiService = {
     get(endpoint){

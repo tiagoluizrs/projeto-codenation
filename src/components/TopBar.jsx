@@ -21,10 +21,22 @@ class TopBar extends Component{
     componentDidMount() {
         this.verifyCartQtd();
         Channel.on('verifyCartQtd', this.verifyCartQtd);
+        Channel.on('changeQuantity', this.changeQuantity)
     }
 
     componentWillUnmount() {
         Channel.unsubscribe('verifyCartQtd', this.verifyCartQtd);
+        Channel.unsubscribe('changeQuantity', this.changeQuantity)
+    }
+
+    changeQuantity(product, quantity){
+        let products = JSON.parse(localStorage.getItem('products'));
+        let index = products.findIndex(item =>  item.id === product.id && item.size === product.size);
+        products[index].quantity += quantity
+        if(products[index].quantity === 0){
+            products.splice(index, 1);
+        }
+        localStorage.setItem('products', JSON.stringify(products))
     }
 
     verifyCartQtd(){

@@ -36,7 +36,7 @@ class ProductPage extends Component{
                             </div>
                             <div className="column flex--column column__medium--6 column__small--12">
                                 <h3 className="product__name">{ props.productItem.name }</h3>
-                                <p className="product__price">R$ { props.productItem.price } <span className="product__portion">em até 3x R$ 00,0</span></p>
+                                <p className="product__price">R$ { props.productItem.price.toFixed(2).toString().replace(".", ",") } <span className="product__portion">em até 3x R$ { (props.productItem.price / 3).toFixed(2).toString().replace(".", ",")}</span></p>
                                 <p className="product__chooseSize">Escolhe seu tamanho</p>
                                 <ul className="product__sizes">
                                     {

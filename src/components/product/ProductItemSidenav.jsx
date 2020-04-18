@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import './ProductsSidenav.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import {Channel} from "../../data/services/EventEmitter";
 
 class ProductItemSidenav extends Component{
     static defaultProps = {
@@ -11,28 +14,41 @@ class ProductItemSidenav extends Component{
         super(props);
     }
 
+    changeQuantity(quantity){
+        const { props } = this;
+        Channel.emit('changeQuantity', props.product, quantity);
+        Channel.emit('updateState');
+        Channel.emit('verifyCartQtd');
+    }
+
     render(){
         const { props } = this;
         return(
             <div className="product-sidenav__item">
                 <figure className="product-sidenav__image">
                     <img src={props.product.image} />
-                    <button type="button">Remover item</button>
+                    {
+                        props.type === 2 ? <button onClick={this.changeQuantity.bind(this, -props.product.quantity)} type="button">Remover item</button> : ''
+                    }
                 </figure>
                 <div className="product-sidenav__description">
-                    <h5>{ props.product.name }</h5>
+                    <h5>{ props.product.name.toUpperCase() }</h5>
                     <p>Tam.: { props.product.size }</p>
-                    <div className="product-sidenav__quantity">
-                        <button type="button">-</button>
-                        <span>1</span>
-                        <button type="button">+</button>
-                    </div>
+                    {
+                        props.type === 2 ?
+                        <div className="product-sidenav__quantity">
+                            <button type="button" onClick={this.changeQuantity.bind(this, -1)}><FontAwesomeIcon icon={faMinus}/></button>
+                            <span>{ props.product.quantity }</span>
+                            <button type="button" onClick={this.changeQuantity.bind(this, 1)}><FontAwesomeIcon icon={faPlus}/></button>
+                        </div>
+                        : ''
+                    }
                 </div>
                 <div className="product-sidenav__price">
-                    { props.product.price }
-                    3x R$ { Math.round(props.product.price / 3, 2)}
+                    <p>R$ { props.product.price.toFixed(2).toString().replace(".", ",") }</p>
+                    <p>3x R$ { (props.product.price / 3).toFixed(2).toString().replace(".", ",")}</p>
                 </div>
-                { props.type }
+                {/*{  }*/}
             </div>
         )
     }

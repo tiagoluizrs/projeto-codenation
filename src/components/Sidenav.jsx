@@ -10,7 +10,8 @@ class Sidenav extends Component{
     static defaultProps = {
         title: '',
         sideStatus: 'sidenav--hide',
-        toggleSideNav: () => {}
+        toggleSideNav: () => {},
+        products: []
     }
 
     constructor(props){
@@ -20,18 +21,11 @@ class Sidenav extends Component{
             productsOnCart: 0
         }
 
-        this.verifyCartQtd = this.verifyCartQtd.bind(this);
-    }
-
-    verifyCartQtd(){
-        let productsOnCart = JSON.parse(localStorage.getItem('products'))
-        if(productsOnCart !== undefined && productsOnCart !== null){
-            this.setState({productsOnCart: productsOnCart.length});
-        }
+        this.totalPrice = this.totalPrice.bind(this);
     }
 
     componentDidMount() {
-        this.verifyCartQtd();
+
     }
 
     toggleSideNav(type){
@@ -39,10 +33,21 @@ class Sidenav extends Component{
         props.toggleSideNav(type);
     }
 
+    totalPrice(){
+        const { props } = this;
+        var price = 0;
+
+        for(let product of props.products){
+            price += product.price * product.quantity
+        }
+        return price.toFixed(2).toString().replace(".",",");
+    }
+
     render(){
         const { state, props } = this;
         return(
             <div className={'sidenav ' + props.sideStatus}>
+                <section className="sidenav__closeArea" onClick={ this.toggleSideNav.bind(this, 3) }></section>
                 <section className="sidenav__right">
                     <div className="container">
                         <div className="row">
@@ -53,7 +58,7 @@ class Sidenav extends Component{
                                 <p className="sidenav__title">
                                     { props.title }
                                     {
-                                        props.type === 2 ? ` (${state.productsOnCart})` : ''
+                                        props.type === 2 ? ` (${props.products.length})` : ''
                                     }
                                 </p>
                             </header>
@@ -63,6 +68,10 @@ class Sidenav extends Component{
                                 ''
                             }
                             <ProductListSidenav type={props.type} products={ props.products }/>
+
+                            <footer className="sidenav__footer">
+                                Subtotal - R$ { this.totalPrice() }
+                            </footer>
                         </div>
                     </div>
                 </section>
