@@ -22,9 +22,21 @@ function* watchListItem(){
     yield takeLatest(ProductActions.PRODUCT_ITEM, listItem);
 }
 
+function* findItem(action){  // fixed
+    const name = action.name
+
+    const productList = yield ProductService.byName(name);
+    yield put(ProductActions.searchResponse(productList))
+}
+
+function* watchFindItem(){
+    yield takeLatest(ProductActions.PRODUCT_SEARCH, findItem);
+}
+
 export default function* ProductSaga(){
     yield all([
         watchListAll(),
-        watchListItem()
+        watchListItem(),
+        watchFindItem()
     ])
 }

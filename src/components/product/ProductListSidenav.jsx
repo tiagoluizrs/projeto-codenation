@@ -19,6 +19,9 @@ class ProductListSidenav extends Component{
         return(
             <section className="product-sidenav">
                 {
+                    props.type === 1 ? <span className="product-sidenav__total-items">{props.products.length + ' items'}</span> : ''
+                }
+                {
                     props.products.map(product => <ProductItemSidenav key={product.id + product.size} type={props.type} product={product}/>)
                 }
             </section>

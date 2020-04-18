@@ -2,6 +2,12 @@
   padding: 0 1em;
   overflow: auto;
   height: calc(100vh - 108px);
+  background-color: #f9f9f9;
+}
+.product-sidenav__total-items {
+  color: #b3b3b3;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 .product-sidenav__item {
   width: 100%;
@@ -30,6 +36,7 @@
   float: left;
   display: flex;
   flex-direction: column;
+  padding: 0 0.3125em;
 }
 .product-sidenav__description h5 {
   margin: 0;
@@ -83,4 +90,4 @@
   font-size: 0.6875rem;
 }
 
-/*# sourceMappingURL=productssidenav.css.map */
+/*# sourceMappingURL=ProductsSidenav.css.map */

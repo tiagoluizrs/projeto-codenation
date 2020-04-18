@@ -60,16 +60,15 @@ class Product extends Component{
         const { props } = this;
 
         return(
-            props.productItem.length > 0 ? <ProductPage
-                                                addToCart={this.addToCart}
-                                                changeSize={this.changeSize}
-                                                productItem={props.productItem[0]}/>
-                                         : ('<div>O produto não existe</div>')
+            <ProductPage
+                addToCart={this.addToCart}
+                changeSize={this.changeSize}
+                productItem={props.productItem}/>
         )
     }
 }
 const mapStateToProps = state => ({
-    productItem: state.ProductReducer
+    productItem: state.ItemReducer
 })
 
 export default connect(mapStateToProps)(Product);

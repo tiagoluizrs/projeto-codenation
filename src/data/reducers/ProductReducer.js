@@ -1,13 +1,11 @@
-import * as ProductConstants from '../actions/ProductActions';
+import * as ProductConstants from "../actions/ProductActions";
 
-const ProductReducer = (productList = [], action) => {
+const productReducer = (productItem = {}, action) => {
     switch(action.type){
-        case ProductConstants.PRODUCT_LIST_RESPONSE:
-            return action.productList;
         case ProductConstants.PRODUCT_ITEM_RESPONSE:
             return action.productItem;
-        default: return productList;
+        default: return productItem;
     }
 }
 
-export default ProductReducer;
+export default productReducer;

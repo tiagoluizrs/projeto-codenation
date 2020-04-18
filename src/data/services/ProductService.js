@@ -7,5 +7,8 @@ export const ProductService = {
     },
     byId(id){
         return ApiService.get(`${endpoint}?id=${id}`);
+    },
+    byName(name){
+        return ApiService.get(`${endpoint}?name=${name}`);
     }
 }

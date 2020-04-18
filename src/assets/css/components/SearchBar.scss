@@ -1,2 +1,29 @@
 @import "../variables";
 @import "../colors";
+
+.search-sidenav{
+    padding: 10px 15px;
+    background: $grey-color-0;
+    box-shadow: 10px 10px 24px -15px rgba(0,0,0,0.2);
+    position: relative;
+    &__input{
+        width: 100%;
+        height: 40px;
+        border: 1px solid $grey-color-1;
+        border-radius: 5px;
+        color: $primary-color;
+        font-weight: 700;
+        font-size: 1em;
+        text-indent: 10px;
+    }
+}
+
+
+@media screen and (min-width: 728px) {
+    .search-sidenav{
+        &__input{
+            height: 40px;
+            outline: none;
+        }
+    }
+}

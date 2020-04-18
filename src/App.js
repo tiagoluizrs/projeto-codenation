@@ -23,6 +23,7 @@ export class App extends Component{
         }
         this.toggleSideNav = this.toggleSideNav.bind(this);
         this.updateState = this.updateState.bind(this);
+        this.search = this.search.bind(this);
     }
 
     componentDidMount(){
@@ -37,6 +38,7 @@ export class App extends Component{
     toggleSideNav(type){
         var data = {},
             products = JSON.parse(localStorage.getItem('products'));
+
         switch (type) {
             case 1:
             data = {
@@ -73,13 +75,21 @@ export class App extends Component{
         this.setState({products});
     }
 
+    search(element){
+        const products = JSON.parse(localStorage.getItem('products'));
+
+        this.setState({
+            products: products === null || products === undefined ? [] : products
+        });
+    }
+
     render(){
         const { state } = this;
         return (
             <div className="App">
                 <Router>
                     <TopBar toggleSideNav={ this.toggleSideNav }/>
-                    <Sidenav products={ state.products } type={state.type} title={state.title} sideStatus={state.sideStatus} toggleSideNav={ this.toggleSideNav }/>
+                    <Sidenav search={this.search} products={ state.products } type={state.type} title={state.title} sideStatus={state.sideStatus} toggleSideNav={ this.toggleSideNav }/>
                     <Suspense fallback={<div>Carregando...</div>} >
                         <Route path={'/'} exact component={Home} />
                         <Route path={'/product/:id'} component={Product} />

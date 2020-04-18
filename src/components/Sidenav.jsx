@@ -11,6 +11,7 @@ class Sidenav extends Component{
         title: '',
         sideStatus: 'sidenav--hide',
         toggleSideNav: () => {},
+        search: () => {},
         products: []
     }
 
@@ -64,14 +65,19 @@ class Sidenav extends Component{
                             </header>
                             {
                                 props.type === 1 ?
-                                <SearchBar />:
+                                <SearchBar search={props.search}/>:
                                 ''
                             }
+
                             <ProductListSidenav type={props.type} products={ props.products }/>
 
-                            <footer className="sidenav__footer">
-                                Subtotal - R$ { this.totalPrice() }
-                            </footer>
+                            {
+                                props.type === 2 ?
+                                <footer className="sidenav__footer">
+                                    Subtotal - R$ { this.totalPrice() }
+                                </footer>
+                                : ''
+                            }
                         </div>
                     </div>
                 </section>

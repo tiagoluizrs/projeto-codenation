@@ -2,7 +2,8 @@ export const PRODUCT_LIST = 'PRODUCT_LIST';
 export const PRODUCT_LIST_RESPONSE = 'PRODUCT_LIST_RESPONSE';
 export const PRODUCT_ITEM = 'PRODUCT_ITEM';
 export const PRODUCT_ITEM_RESPONSE = 'PRODUCT_ITEM_RESPONSE';
-export const PRODUCT_ITEMS_CART = 'PRODUCT_ITEMS_CART'
+export const PRODUCT_SEARCH = 'PRODUCT_SEARCH';
+export const PRODUCT_SEARCH_RESPONSE = 'PRODUCT_SEARCH_RESPONSE';
 
 export const list = () => {
     return {
@@ -31,10 +32,16 @@ export const listItemResponse = (productItem) => {
     }
 }
 
-
-
-export const productItemsCard = () => {
+export const search = (name) => {
     return {
-        type: PRODUCT_ITEMS_CART
+        type: PRODUCT_SEARCH,
+        name
+    }
+}
+
+export const searchResponse = (productList) => {
+    return {
+        type: PRODUCT_SEARCH_RESPONSE,
+        productList
     }
 }

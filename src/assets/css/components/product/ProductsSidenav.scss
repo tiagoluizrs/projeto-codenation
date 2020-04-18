@@ -6,6 +6,14 @@
     padding: 0 $tam-16;
     overflow: auto;
     height: calc(100vh - 108px);
+    background:{
+        color: $light-grey;
+    };
+    &__total-items{
+        color: lighten($grey-color-1, 20);
+        font-size: $font-12;
+        font-weight: 600;
+    }
     &__item{
         width: 100%;
         display: block;
@@ -37,6 +45,7 @@
         float: left;
         display: flex;
         flex-direction: column;
+        padding: 0 $tam-5;
         h5{
             margin: 0;
         }
