@@ -1,0 +1,37 @@
+.products__not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.products__layout {
+  margin: 0;
+  line-height: 40px;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: white;
+}
+.products__layout p {
+  margin: 0;
+  width: 100%;
+  color: #bababa;
+  font-weight: 500;
+  font-size: 0.8125rem;
+}
+.products__layout button {
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 728px) {
+  #changeColumn {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=ProductsList.css.map */

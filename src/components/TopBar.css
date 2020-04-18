@@ -1,0 +1,43 @@
+.topbar {
+  left: 0;
+  padding: 0.625em 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.topbar__logo {
+  padding: 0.25em 0;
+  height: 36px;
+  display: inline-block;
+}
+.topbar__logo img {
+  height: 100%;
+}
+.topbar__button {
+  width: 36px;
+  height: 36px;
+  font-size: 1.1em;
+  position: relative;
+}
+.topbar__badge {
+  width: 18px;
+  height: 18px;
+  display: block;
+  color: #fff;
+  border-radius: 100%;
+  line-height: 18px;
+  text-align: center;
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  margin-top: -9px;
+  font-size: 0.625rem;
+}
+.topbar__badge--danger {
+  background-color: #e74c3c;
+}
+
+/*# sourceMappingURL=TopBar.css.map */
