@@ -51,6 +51,7 @@ class Product extends Component{
             }
 
             Channel.emit('verifyCartQtd');
+            alert("Adicionado ao carrinho.")
         }else{
             alert("Selecionar tamanho")
         }
