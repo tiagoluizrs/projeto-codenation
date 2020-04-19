@@ -13,20 +13,24 @@ class TopBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            productsOnCart: 0
+            productsOnCart: 0,
+            pulseClass: ''
         }
         this.verifyCartQtd = this.verifyCartQtd.bind(this);
+        this.pulse = this.pulse.bind(this);
     }
 
     componentDidMount() {
         this.verifyCartQtd();
         Channel.on('verifyCartQtd', this.verifyCartQtd);
-        Channel.on('changeQuantity', this.changeQuantity)
+        Channel.on('changeQuantity', this.changeQuantity);
+        Channel.on('pulse', this.pulse)
     }
 
     componentWillUnmount() {
         Channel.unsubscribe('verifyCartQtd', this.verifyCartQtd);
-        Channel.unsubscribe('changeQuantity', this.changeQuantity)
+        Channel.unsubscribe('changeQuantity', this.changeQuantity);
+        Channel.unsubscribe('pulse', this.pulse);
     }
 
     changeQuantity(product, quantity){
@@ -42,8 +46,15 @@ class TopBar extends Component{
     verifyCartQtd(){
         let productsOnCart = JSON.parse(localStorage.getItem('products'))
         if(productsOnCart !== undefined && productsOnCart !== null){
-            this.setState({productsOnCart: productsOnCart.length});
+            this.setState({ productsOnCart: productsOnCart.length });
         }
+    }
+
+    pulse(){
+        this.setState({ pulseClass: 'topbar__badge--pulse'});
+        setTimeout(() => {
+            this.setState({ pulseClass: '' })
+        }, 1000)
     }
 
     toggleSideNav(type){
@@ -68,7 +79,7 @@ class TopBar extends Component{
                                 <button type="button" className="topbar__button" onClick={ this.toggleSideNav.bind(this, 2) }>
                                     <FontAwesomeIcon icon={faShoppingBag} />
                                     {
-                                        state.productsOnCart > 0 ? <span className="topbar__badge topbar__badge--danger">{state.productsOnCart}</span> : ''
+                                        state.productsOnCart > 0 ? <span className={ "topbar__badge topbar__badge--danger " + state.pulseClass }>{state.productsOnCart}</span> : ''
                                     }
                                 </button>
                             </div>

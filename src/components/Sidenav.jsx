@@ -5,6 +5,8 @@ import SearchBar from "./SearchBar";
 import ProductListSidenav from "./product/ProductListSidenav";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import * as SearchActions from "../data/actions/SearchAction";
+import {connect} from "react-redux";
 
 class Sidenav extends Component{
     static defaultProps = {
@@ -12,7 +14,8 @@ class Sidenav extends Component{
         sideStatus: 'sidenav--hide',
         toggleSideNav: () => {},
         search: () => {},
-        products: []
+        products: [],
+        productSearch: []
     }
 
     constructor(props){
@@ -23,15 +26,16 @@ class Sidenav extends Component{
         }
 
         this.totalPrice = this.totalPrice.bind(this);
-    }
-
-    componentDidMount() {
-
+        this.search = this.search.bind(this);
     }
 
     toggleSideNav(type){
         const { props } = this;
         props.toggleSideNav(type);
+    }
+
+    search(element){
+        this.props.dispatch(SearchActions.search(element.value))
     }
 
     totalPrice(){
@@ -48,7 +52,7 @@ class Sidenav extends Component{
         const { state, props } = this;
         return(
             <div className={'sidenav ' + props.sideStatus}>
-                <section className="sidenav__closeArea" onClick={ this.toggleSideNav.bind(this, 3) }></section>
+                <section className="sidenav__closeArea" onClick={ this.toggleSideNav.bind(this, 3) } />
                 <section className="sidenav__right">
                     <div className="container">
                         <div className="row">
@@ -58,26 +62,17 @@ class Sidenav extends Component{
                                 </button>
                                 <p className="sidenav__title">
                                     { props.title }
-                                    {
-                                        props.type === 2 ? ` (${props.products.length})` : ''
-                                    }
+                                    { props.type === 2 ? ` (${props.products.length})` : '' }
                                 </p>
                             </header>
-                            {
-                                props.type === 1 ?
-                                <SearchBar search={props.search}/>:
-                                ''
+                            { props.type === 1 ? <SearchBar search={this.search}/>: '' }
+
+                            { props.type === 1
+                                ? <ProductListSidenav type={props.type} products={ props.productSearch }/>
+                                : <ProductListSidenav type={props.type} products={ props.products }/>
                             }
 
-                            <ProductListSidenav type={props.type} products={ props.products }/>
-
-                            {
-                                props.type === 2 ?
-                                <footer className="sidenav__footer">
-                                    Subtotal - R$ { this.totalPrice() }
-                                </footer>
-                                : ''
-                            }
+                            { props.type === 2 ? <footer className="sidenav__footer">Subtotal - R$ { this.totalPrice() } </footer> : '' }
                         </div>
                     </div>
                 </section>
@@ -86,4 +81,8 @@ class Sidenav extends Component{
     }
 }
 
-export default Sidenav;
+const mapStateToProps = state => ({
+    productSearch: state.SearchReducer
+})
+
+export default connect(mapStateToProps)(Sidenav);

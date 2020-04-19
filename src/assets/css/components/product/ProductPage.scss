@@ -99,6 +99,19 @@
     }
 }
 
+@media screen and (min-width: 480px) {
+    .product{
+        &__image{
+            img{
+                width: auto !important;
+                height: 100%;
+                margin: 0 auto;
+                display: inherit;
+            }
+        }
+    }
+}
+
 
 @media screen and (min-width: 728px) {
     .product {
@@ -106,6 +119,13 @@
             font: {
                 size: $font-16;
             };
+        }
+        &__image {
+            img {
+                width: 100% !important;
+                height: auto;
+                display: flex;
+            }
         }
         &__price{
             font: {
@@ -140,3 +160,4 @@
         }
     }
 }
+

@@ -72,9 +72,22 @@
   background-color: #4d4d4d;
 }
 
+@media screen and (min-width: 480px) {
+  .product__image img {
+    width: auto !important;
+    height: 100%;
+    margin: 0 auto;
+    display: inherit;
+  }
+}
 @media screen and (min-width: 728px) {
   .product__name {
     font-size: 1rem;
+  }
+  .product__image img {
+    width: 100% !important;
+    height: auto;
+    display: flex;
   }
   .product__price {
     font-size: 0.875em;

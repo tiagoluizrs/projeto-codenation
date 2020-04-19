@@ -1,4 +1,5 @@
-const url = 'http://192.168.0.40:3002/api/codenation-ecommerce/';
+// const url = 'http://192.168.0.40:3002/api/codenation-ecommerce/';
+const url = 'https://flask-codenation.herokuapp.com/';
 
 export const ApiService = {
     get(endpoint){

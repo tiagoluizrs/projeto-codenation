@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './ProductsSidenav.css';
 import ProductItemSidenav from "./ProductItemSidenav";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearchLocation} from "@fortawesome/free-solid-svg-icons";
 
 class ProductListSidenav extends Component{
     static defaultProps = {
@@ -22,7 +20,7 @@ class ProductListSidenav extends Component{
                     props.type === 1 ? <span className="product-sidenav__total-items">{props.products.length + ' items'}</span> : ''
                 }
                 {
-                    props.products.map(product => <ProductItemSidenav key={product.id + product.size} type={props.type} product={product}/>)
+                    props.products.map(product => <ProductItemSidenav key={product.id } type={props.type} product={product}/>)
                 }
             </section>
         )

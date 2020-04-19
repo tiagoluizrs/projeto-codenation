@@ -1,4 +1,5 @@
 import * as ProductActions from '../actions/ProductActions';
+import * as SearchActions from '../actions/SearchAction';
 import { ProductService } from '../services/ProductService';
 
 import { all, put, takeLatest } from 'redux-saga/effects';
@@ -22,21 +23,21 @@ function* watchListItem(){
     yield takeLatest(ProductActions.PRODUCT_ITEM, listItem);
 }
 
-function* findItem(action){  // fixed
+function* searchProducts(action){  // fixed
     const name = action.name
 
-    const productList = yield ProductService.byName(name);
-    yield put(ProductActions.searchResponse(productList))
+    const searchList = yield ProductService.byName(name);
+    yield put(SearchActions.searchResponse(searchList))
 }
 
-function* watchFindItem(){
-    yield takeLatest(ProductActions.PRODUCT_SEARCH, findItem);
+function* watchSearch(){
+    yield takeLatest(SearchActions.SEARCH, searchProducts);
 }
 
 export default function* ProductSaga(){
     yield all([
         watchListAll(),
         watchListItem(),
-        watchFindItem()
+        watchSearch(),
     ])
 }

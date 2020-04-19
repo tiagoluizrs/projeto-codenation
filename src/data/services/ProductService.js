@@ -6,9 +6,9 @@ export const ProductService = {
         return ApiService.get(endpoint);
     },
     byId(id){
-        return ApiService.get(`${endpoint}?id=${id}`);
+        return ApiService.get(`${endpoint}/${id}`);
     },
     byName(name){
-        return ApiService.get(`${endpoint}?name=${name}`);
+        return ApiService.get(`${endpoint}?name=${name.replace(" ", "+")}`);
     }
 }
