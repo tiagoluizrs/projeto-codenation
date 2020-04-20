@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './ProductItem.css';
+import noImage from "../../assets/img/no-image.png";
 
 class ProductItem extends Component{
     static defaultProps = {
@@ -23,7 +24,13 @@ class ProductItem extends Component{
                             {product.promotional ? (
                                 <span className="product__percent">- {product.promotionalPercent}%</span>
                             ) : ('')}
-                            <img src={ product.image } alt=""/>
+                            <img src={
+                                product.image === ""
+                                ? noImage
+                                : product.image
+
+                            } alt=""/>
+
                         </figure>
                     </a>
                     <div className="product__description">

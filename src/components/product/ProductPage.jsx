@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './ProductPage.css';
+import noImage from "../../assets/img/no-image.png";
 
 class ProductPage extends Component{
     static defaultProps = {
@@ -36,7 +37,12 @@ class ProductPage extends Component{
                         <div key={props.productItem.id}>
                             <div className="column column__medium--6 column__small--12">
                                 <figure className="product__image">
-                                    <img src={props.productItem.image} alt=""/>
+                                    <img src={
+                                        props.productItem.image === ""
+                                            ? noImage
+                                            : props.productItem.image
+
+                                    } alt=""/>
                                 </figure>
                             </div>
                             <div className="column flex--column column__medium--6 column__small--12">
