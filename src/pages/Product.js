@@ -11,6 +11,7 @@ class Product extends Component{
         super(props)
         this.addToCart = this.addToCart.bind(this);
         this.changeSize = this.changeSize.bind(this);
+        this.initReactAnalytics = this.initReactAnalytics.bind(this);
         this.state = {
             sizes: ""
         }
@@ -19,6 +20,11 @@ class Product extends Component{
     componentDidMount() {
         const { match } = this.props;
         this.props.dispatch(ProductActions.item(match.params.id))
+        this.initReactAnalytics();
+    }
+
+
+    initReactAnalytics(){
         ReactGA.initialize('UA-164033301-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
     }

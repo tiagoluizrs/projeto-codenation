@@ -12,10 +12,16 @@ class Home extends Component{
 
     constructor(props){
         super(props);
+        this.initReactAnalytics = this.initReactAnalytics.bind(this);
     }
 
     componentDidMount() {
         this.props.dispatch(ProductActions.list());
+        this.initReactAnalytics();
+    }
+
+
+    initReactAnalytics(){
         ReactGA.initialize('UA-164033301-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
