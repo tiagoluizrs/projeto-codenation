@@ -3,6 +3,7 @@ import './ProductsSidenav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import {Channel} from "../../data/services/EventEmitter";
+import noImage from "../../assets/img/no-image.png";
 
 class ProductItemSidenav extends Component{
     static defaultProps = {
@@ -27,7 +28,11 @@ class ProductItemSidenav extends Component{
             <div className="product-sidenav__item">
                     <figure className="product-sidenav__image">
                         <a className="product-sidenav__link" href={ window.location.origin + '/product/' + props.product.id}>
-                            <img src={props.product.image} />
+                            <img src={
+                                props.product.image === ""
+                                    ? noImage
+                                    : props.product.image
+                            } alt={props.product.name}/>
                         </a>
                         {
                             props.type === 2 ? <button onClick={this.changeQuantity.bind(this, -props.product.quantity)} type="button">Remover item</button> : ''

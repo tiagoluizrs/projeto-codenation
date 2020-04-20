@@ -13,30 +13,28 @@ class ProductItem extends Component{
     }
 
     render(){
-        const { props } = this,
-                product = props.product;
+        const { props } = this;
 
         return(
             <div className={"mt-2 column column__medium--6 column__large--4 column__small" + props.columns }>
                 <div className="product__item">
-                    <a href={ '/product/' + product.id } className="product__link">
+                    <a href={ '/product/' + props.product.id } className="product__link">
                         <figure className="product__image">
-                            {product.promotional ? (
-                                <span className="product__percent">- {product.promotionalPercent}%</span>
+                            {props.product.promotional ? (
+                                <span className="product__percent">- {props.product.promotionalPercent}%</span>
                             ) : ('')}
                             <img src={
-                                product.image === ""
+                                props.product.image === ""
                                 ? noImage
-                                : product.image
-
-                            } alt=""/>
+                                : props.product.image
+                            } alt={ props.product.name }/>
 
                         </figure>
                     </a>
                     <div className="product__description">
-                        <h3 className="product__name">{ product.name }</h3>
+                        <h3 className="product__name">{ props.product.name }</h3>
                         <p className="product__price">
-                            R$ { product.price }</p>
+                            R$ { props.product.price }</p>
                     </div>
                 </div>
             </div>

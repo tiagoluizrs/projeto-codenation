@@ -42,7 +42,7 @@ class ProductPage extends Component{
                                             ? noImage
                                             : props.productItem.image
 
-                                    } alt=""/>
+                                    } alt={props.productItem.name}/>
                                 </figure>
                             </div>
                             <div className="column flex--column column__medium--6 column__small--12">
