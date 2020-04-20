@@ -100,18 +100,18 @@
     }
 }
 
-@media screen and (min-width: 480px) {
-    .product{
-        &__image{
-            img{
-                width: auto !important;
-                height: 100%;
-                margin: 0 auto;
-                display: inherit;
-            }
-        }
-    }
-}
+//@media screen and (min-width: 480px) {
+//    .product{
+//        &__image{
+//            img{
+//                width: auto !important;
+//                height: 100%;
+//                margin: 0 auto;
+//                display: inherit;
+//            }
+//        }
+//    }
+//}
 
 
 @media screen and (min-width: 728px) {
