@@ -19,6 +19,7 @@ class Product extends Component{
     componentDidMount() {
         const { match } = this.props;
         this.props.dispatch(ProductActions.item(match.params.id))
+        ReactGA.initialize('UA-164033301-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
 

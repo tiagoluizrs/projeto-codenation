@@ -16,6 +16,7 @@ class Home extends Component{
 
     componentDidMount() {
         this.props.dispatch(ProductActions.list());
+        ReactGA.initialize('UA-164033301-1');
         ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
