@@ -11,6 +11,7 @@
         }
     }
     &__name{
+        text-transform: capitalize;
         font:{
             size: $font-24;
         };
