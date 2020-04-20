@@ -1,6 +1,7 @@
 import React, {Component, Suspense} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 import Home from "./pages/Home";
 import Product from "./pages/Product";
@@ -26,6 +27,7 @@ export class App extends Component{
 
     componentDidMount(){
         Channel.on('updateState', this.updateState);
+        ReactGA.initialize('UA-164033301-1');
     }
 
     componentWillUnmount() {

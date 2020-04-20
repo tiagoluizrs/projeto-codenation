@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import ProductPage from "../components/product/ProductPage";
 import { Channel } from "../data/services/EventEmitter";
 import Preloader from "../components/Preloader";
+import ReactGA from 'react-ga';
 
 class Product extends Component{
     constructor(props){
@@ -18,6 +19,7 @@ class Product extends Component{
     componentDidMount() {
         const { match } = this.props;
         this.props.dispatch(ProductActions.item(match.params.id))
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
     changeSize(event){

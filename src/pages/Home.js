@@ -3,6 +3,7 @@ import ProductsList from "../components/product/ProductsList";
 import * as ProductActions from "../data/actions/ProductActions";
 import {connect} from "react-redux";
 import Preloader from "../components/Preloader";
+import ReactGA from 'react-ga';
 
 class Home extends Component{
     static defaultProps = {
@@ -15,6 +16,7 @@ class Home extends Component{
 
     componentDidMount() {
         this.props.dispatch(ProductActions.list());
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
     render(){
