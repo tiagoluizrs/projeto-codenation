@@ -35,7 +35,7 @@ class Sidenav extends Component{
     }
 
     search(element){
-        this.props.dispatch(SearchActions.search(element.value))
+        this.props.dispatch(SearchActions.search(element.value.toLowerCase()))
     }
 
     totalPrice(){
