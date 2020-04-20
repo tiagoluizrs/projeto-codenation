@@ -5,6 +5,7 @@ import ProductPage from "../components/product/ProductPage";
 import { Channel } from "../data/services/EventEmitter";
 import Preloader from "../components/Preloader";
 import ReactGA from 'react-ga';
+import {Helmet} from 'react-helmet'
 
 class Product extends Component{
     constructor(props){
@@ -71,11 +72,29 @@ class Product extends Component{
         const { props } = this;
 
         return(
-            Object.keys(props.productItem).length === 0 ? <Preloader />:
-            <ProductPage
-                addToCart={this.addToCart}
-                changeSize={this.changeSize}
-                productItem={props.productItem}/>
+                Object.keys(props.productItem).length === 0 ? <Preloader />:
+                <div>
+                    <Helmet>
+                        <meta charSet="utf-8" />
+                        <title>Fashionista - {props.productItem.name}</title>
+                        <meta name="robots" content="follow, index"/>
+                        <meta name="description" content="Loja virtual de teste para demonstrar os recursos do ReactJS."/>
+                        <meta property="og:locale" content="pt_BR"/>
+                        <meta property="og:url" content={window.location.pathname + window.location.search}/>
+                        <meta property="og:title" content={"Fashionista - " + props.productItem.name}/>
+                        <meta property="og:site_name" content="Fashionista"/>
+                        <meta property="og:description" content="Loja virtual de teste para demonstrar os recursos do ReactJS."/>
+                        <meta property="og:image" content={props.productItem.image} />
+                        <meta property="og:image:type" content="image/jpeg"/>
+                        <meta property="og:image:width" content="330"/>
+                        <meta property="og:image:height" content="420"/>
+                        <meta property="og:type" content="website"/>
+                    </Helmet>
+                    <ProductPage
+                        addToCart={this.addToCart}
+                        changeSize={this.changeSize}
+                        productItem={props.productItem}/>
+                </div>
         )
     }
 }
