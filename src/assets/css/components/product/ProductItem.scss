@@ -45,6 +45,8 @@
             font-weight: 700;
             margin: 0;
             text-transform: uppercase;
+            overflow: hidden;
+            max-height: 14px;
         }
         &__price{
             font-weight: 400;

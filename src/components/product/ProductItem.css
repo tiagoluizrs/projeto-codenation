@@ -38,6 +38,8 @@
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
+  overflow: hidden;
+  max-height: 14px;
 }
 .products .product__price {
   font-weight: 400;
