@@ -3,6 +3,7 @@ import * as ProductActions from "../data/actions/ProductActions";
 import {connect} from "react-redux";
 import ProductPage from "../components/product/ProductPage";
 import { Channel } from "../data/services/EventEmitter";
+import Preloader from "../components/Preloader";
 
 class Product extends Component{
     constructor(props){
@@ -16,7 +17,7 @@ class Product extends Component{
 
     componentDidMount() {
         const { match } = this.props;
-        this.props.dispatch(ProductActions.item(match.params.id));
+        this.props.dispatch(ProductActions.item(match.params.id))
     }
 
     changeSize(event){
@@ -61,6 +62,7 @@ class Product extends Component{
         const { props } = this;
 
         return(
+            Object.keys(props.productItem).length === 0 ? <Preloader />:
             <ProductPage
                 addToCart={this.addToCart}
                 changeSize={this.changeSize}

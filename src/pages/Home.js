@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import ProductsList from "../components/product/ProductsList";
 import * as ProductActions from "../data/actions/ProductActions";
 import {connect} from "react-redux";
-import {App} from "../App";
+import Preloader from "../components/Preloader";
 
 class Home extends Component{
     static defaultProps = {
-        productList: [],
+        productList: null,
     }
 
     constructor(props){
@@ -20,7 +20,8 @@ class Home extends Component{
     render(){
         const { props } = this;
         return(
-            <ProductsList productList={props.productList}/>
+            props.productList.length === 0 ? <Preloader />:
+                <ProductsList productList={props.productList}/>
         )
     }
 }
