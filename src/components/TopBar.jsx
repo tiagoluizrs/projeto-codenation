@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faShoppingBag, faHome } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 import './TopBar.css';
 import logo from '../assets/img/logo.png';
 import { Channel } from "../data/services/EventEmitter";
@@ -73,6 +74,9 @@ class TopBar extends Component{
                                 <img src={ logo } alt="Logo Fashionista - Topo do site" />
                             </a>
                             <div className="topbar__buttons">
+                                <Link to="/">
+                                    <FontAwesomeIcon icon={faHome} />
+                                </Link>
                                 <button type="button" className="topbar__button" onClick={ this.toggleSideNav.bind(this, 1) }>
                                     <FontAwesomeIcon icon={faSearch} />
                                 </button>

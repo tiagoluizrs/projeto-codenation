@@ -21,7 +21,9 @@ class Home extends Component{
         const { props } = this;
         return(
             props.productList.length === 0 ? <Preloader />:
-                <ProductsList productList={props.productList}/>
+                <div>
+                    <ProductsList productList={props.productList}/>
+                </div>
         )
     }
 }

@@ -16,9 +16,20 @@
 .topbar__logo img {
   height: 100%;
 }
+.topbar__buttons a, .topbar__buttons a:hover, .topbar__buttons a:active, .topbar__buttons a:visited {
+  width: 36px;
+  height: 36px;
+  float: left;
+  text-align: center;
+  line-height: 36px;
+  font-size: 1.25rem;
+  position: relative;
+  color: #333333;
+}
 .topbar__button {
   width: 36px;
   height: 36px;
+  float: left;
   font-size: 1.1em;
   position: relative;
 }

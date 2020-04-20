@@ -1,8 +1,7 @@
 import React, {Component, Suspense} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { connect } from 'react-redux';
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import TopBar from "./components/TopBar";

@@ -6,7 +6,6 @@
 }
 .product__image img {
   width: 100%;
-  max-height: calc(100vh - 70px);
 }
 .product__name {
   font-size: 1.5rem;
