@@ -11,11 +11,10 @@ class SearchBar extends Component{
         this.search = this.search.bind(this);
     }
 
-    search(event){
+    async search(event){
         const { props } = this,
               { target } = event;
-
-        props.search(event.target);
+        await props.search(target);
     }
 
     render(){
