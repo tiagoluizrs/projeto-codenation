@@ -8,6 +8,12 @@
     align-items: center;
     justify-content: space-between;
     .product{
+        &__no-promotion{
+            color: $grey-color-1;
+            font-weight: 700;
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
         &__item{
             display: flex;
             flex-direction: column;

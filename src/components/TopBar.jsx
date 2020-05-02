@@ -36,8 +36,8 @@ class TopBar extends Component{
 
     changeQuantity(product, quantity){
         let products = JSON.parse(localStorage.getItem('products'));
-        let index = products.findIndex(item =>  item.id === product.id && item.size === product.size);
-        products[index].quantity += quantity
+        let index = products.findIndex(item =>  item.sku === product.sku && item.size === product.size);
+        products[index].quantity += quantity;
         if(products[index].quantity === 0){
             products.splice(index, 1);
         }
@@ -45,7 +45,7 @@ class TopBar extends Component{
     }
 
     verifyCartQtd(){
-        let productsOnCart = JSON.parse(localStorage.getItem('products'))
+        let productsOnCart = JSON.parse(localStorage.getItem('products'));
         if(productsOnCart !== undefined && productsOnCart !== null){
             this.setState({ productsOnCart: productsOnCart.length });
         }
@@ -54,7 +54,7 @@ class TopBar extends Component{
     pulse(){
         this.setState({ pulseClass: 'topbar__badge--pulse'});
         setTimeout(() => {
-            this.setState({ pulseClass: '' })
+            this.setState({ pulseClass: '' });
         }, 1000)
     }
 

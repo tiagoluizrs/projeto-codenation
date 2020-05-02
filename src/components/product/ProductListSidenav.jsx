@@ -20,7 +20,7 @@ class ProductListSidenav extends Component{
                     props.type === 1 ? <span className="product-sidenav__total-items">{props.products.length + ' items'}</span> : ''
                 }
                 {
-                    props.products.map(product => <ProductItemSidenav key={product.id } type={props.type} product={product}/>)
+                    props.products.map((product, i) => <ProductItemSidenav key={i} type={props.type} product={product}/>)
                 }
             </section>
         )

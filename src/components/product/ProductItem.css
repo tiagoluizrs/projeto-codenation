@@ -5,6 +5,12 @@
   align-items: center;
   justify-content: space-between;
 }
+.products .product__no-promotion {
+  color: #808080;
+  font-weight: 700;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
 .products .product__item {
   display: flex;
   flex-direction: column;

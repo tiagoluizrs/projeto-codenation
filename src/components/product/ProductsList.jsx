@@ -16,23 +16,44 @@ class ProductsList extends Component{
             columns: '--12',
             icon: faThLarge
         }
+        this.mountHistoricColumn = this.mountHistoricColumn.bind(this);
         this.changeColumn = this.changeColumn.bind(this);
+    }
+
+    componentDidMount() {
+        this.mountHistoricColumn();
+    }
+
+    mountHistoricColumn(){
+        let columns = localStorage.getItem('columns');
+
+        if (columns !== undefined && columns !== null){
+            columns = JSON.parse(columns);
+            console.log(columns)
+            this.setState({
+                columns: columns.columns,
+                icon: columns.icon
+            });
+        }
     }
 
     changeColumn(event){
         const { state } = this;
+        let storage = localStorage, columns, icon;
 
         if(state.columns === '--12'){
-            this.setState({
-                columns: '--6',
-                icon: faThList
-            })
+            columns = '--6';
+            icon = faThList;
         }else{
-            this.setState({
-                columns: '--12',
-                icon: faThLarge
-            })
+            columns = '--12';
+            icon = faThLarge;
         }
+        let data = {
+            columns: columns,
+            icon: icon
+        };
+        this.setState(data);
+        storage.setItem('columns', JSON.stringify(data));
     }
 
     render(){
@@ -71,7 +92,7 @@ class ProductsList extends Component{
                     <div className="row row--flexstart">
                         {
                             props.productList.map(product => <ProductItem
-                                key={product.id}
+                                key={product.sizes[0].sku}
                                 product={product}
                                 columns={state.columns}/>)
                         }

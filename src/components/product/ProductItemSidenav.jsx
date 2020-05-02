@@ -27,7 +27,7 @@ class ProductItemSidenav extends Component{
         return(
             <div className="product-sidenav__item">
                     <figure className="product-sidenav__image">
-                        <a className="product-sidenav__link" href={ window.location.origin + '/product/' + props.product.id}>
+                        <a className="product-sidenav__link" href={ window.location.origin + '/product/' + props.product.name.replace(/\ /g, "+")}>
                             <img src={
                                 props.product.image === ""
                                     ? noImage
@@ -54,8 +54,10 @@ class ProductItemSidenav extends Component{
                     }
                 </div>
                 <div className="product-sidenav__price">
-                    <p>R$ { props.product.price.toFixed(2).toString().replace(".", ",") }</p>
-                    <p>3x R$ { (props.product.price / 3).toFixed(2).toString().replace(".", ",")}</p>
+                    <p>{
+                        props.product.on_sale ? props.product.actual_price : props.product.regular_price
+                    }</p>
+                    <p>{ props.product.installments }</p>
                 </div>
             </div>
         )

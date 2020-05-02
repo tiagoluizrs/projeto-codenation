@@ -85,7 +85,7 @@ export class App extends Component{
 
                     <Suspense fallback={<div>Carregando...</div>} >
                         <Route path={'/'} exact component={Home} />
-                        <Route path={'/product/:id'} component={Product} />
+                        <Route path={'/product/:name'} component={Product} />
                     </Suspense>
                 </Router>
             </div>

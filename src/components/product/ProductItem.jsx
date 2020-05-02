@@ -18,10 +18,10 @@ class ProductItem extends Component{
         return(
             <div className={"mt-2 column column__medium--6 column__large--4 column__small" + props.columns }>
                 <div className="product__item">
-                    <a href={ '/product/' + props.product.id } className="product__link">
+                    <a href={ '/product/' + props.product.name.replace(/\ /g, "+") } className="product__link">
                         <figure className="product__image">
-                            {props.product.promotional ? (
-                                <span className="product__percent">- {props.product.promotionalPercent}%</span>
+                            {props.product.on_sale ? (
+                                <span className="product__percent">- {props.product.discount_percentage}</span>
                             ) : ('')}
                             <img src={
                                 props.product.image === ""
@@ -34,7 +34,13 @@ class ProductItem extends Component{
                     <div className="product__description">
                         <h3 className="product__name">{ props.product.name }</h3>
                         <p className="product__price">
-                            R$ { props.product.price }</p>
+                            {props.product.on_sale ? (
+                                <span>
+                                    <span className="product__no-promotion">{ props.product.regular_price }</span>
+                                    { props.product.actual_price }
+                                </span>
+                            ) : props.product.regular_price}
+                        </p>
                     </div>
                 </div>
             </div>

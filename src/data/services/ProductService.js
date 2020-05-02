@@ -3,12 +3,22 @@ const endpoint = 'product';
 
 export const ProductService = {
     list(){
-        return ApiService.get(endpoint);
+        return ApiService.get();
     },
-    byId(id){
-        return ApiService.get(`${endpoint}/${id}`);
+    async byName(name){
+        let products = await ApiService.get();
+        let product = (n) => products.filter(product => {
+            return product.name == n.replace(/\+/g, " ");
+        });
+        let productItem = product(name);
+        if (productItem.length > 0) return productItem[0];
+        return [];
     },
-    byName(name){
-        return ApiService.get(`${endpoint}?name=${name.replace(" ", "+")}`);
+    async bySearchName(name){
+        let products = await ApiService.get();
+        let productsFound = (n) => products.filter(product => {
+            return product.name.indexOf(n.toUpperCase()) > -1 || product.name.indexOf(n.toLowerCase()) > -1 || product.name.indexOf(n) > -1;
+        });
+        return productsFound(name);
     }
 }

@@ -14,13 +14,19 @@ class Product extends Component{
         this.changeSize = this.changeSize.bind(this);
         this.initReactAnalytics = this.initReactAnalytics.bind(this);
         this.state = {
-            sizes: ""
+            sizes: "",
+            sku: "",
+            msg: {
+                status: false,
+                text: null,
+                type: null
+            }
         }
     }
 
     componentDidMount() {
         const { match } = this.props;
-        this.props.dispatch(ProductActions.item(match.params.id))
+        this.props.dispatch(ProductActions.item(match.params.name));
         this.initReactAnalytics();
     }
 
@@ -32,8 +38,11 @@ class Product extends Component{
 
     changeSize(event){
         const { target } = event;
-        let sizes = target.value;
-        this.setState({sizes});
+        let sizes = target.value.split("+");
+        this.setState({
+            sizes: sizes[0],
+            sku: sizes[1]
+        });
     }
 
     addToCart(item){
@@ -41,18 +50,22 @@ class Product extends Component{
         if(state.sizes !== ""){
             let products = JSON.parse(localStorage.getItem('products')),
                 newProduct = {
-                    id: item.id,
                     image: item.image,
                     name: item.name,
-                    price: item.price,
+                    price: item.on_sale ? item.actual_price : item.regular_price,
+                    on_sale: item.on_sale,
+                    actual_price: item.actual_price,
+                    regular_price: item.regular_price,
+                    installments: item.installments,
                     quantity: 1,
-                    size: state.sizes
+                    size: state.sizes,
+                    sku: item.sizes.sku,
                 };
 
             if(products === null || products === undefined){
                 localStorage.setItem('products', JSON.stringify([newProduct]))
             }else{
-                let index = products.findIndex(product => product.id === item.id && product.size === state.sizes);
+                let index = products.findIndex(product => product.sku === item.sku && product.size === state.sizes && product.name === state.name);
                 if(index > -1){
                     products[index].quantity++;
                 }else{
@@ -63,8 +76,21 @@ class Product extends Component{
 
             Channel.emit('verifyCartQtd');
             Channel.emit('pulse');
+            this.setState({
+                msg: {
+                    status: false,
+                    text: null,
+                    type: null
+                }
+            })
         }else{
-            alert("Selecionar tamanho")
+            this.setState({
+                msg: {
+                    status: true,
+                    text: 'É necessário escolher um tamanho',
+                    type: 'error'
+                }
+            })
         }
     }
 
@@ -93,6 +119,7 @@ class Product extends Component{
                     <ProductPage
                         addToCart={this.addToCart}
                         changeSize={this.changeSize}
+                        msg={this.state.msg}
                         productItem={props.productItem}/>
                 </div>
         )

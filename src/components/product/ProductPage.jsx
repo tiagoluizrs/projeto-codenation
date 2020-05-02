@@ -34,7 +34,7 @@ class ProductPage extends Component{
             <main className="product">
                 <div className="row row--flexstart">
                     <div className="container">
-                        <div key={props.productItem.id}>
+                        <div key={props.productItem.name}>
                             <div className="column column__medium--6 column__small--12">
                                 <figure className="product__image">
                                     <img src={
@@ -47,24 +47,26 @@ class ProductPage extends Component{
                             </div>
                             <div className="column flex--column column__medium--6 column__small--12">
                                 <h3 className="product__name">{ props.productItem.name }</h3>
-                                <p className="product__price">R$ {
-                                    props.productItem.price !== undefined ? props.productItem.price.toFixed(2).toString().replace(".",",") : ''
-                                } <span className="product__portion">em até 3x R$
+                                <p className="product__price">
                                     {
-                                        props.productItem.price !== undefined ? (props.productItem.price / 3).toFixed(2).toString().replace(".",",") : ''
+                                        props.productItem.on_sale ? props.productItem.actual_price : props.productItem.regular_price
                                     }
-                                </span></p>
+                                    <span className="product__portion">em até { props.productItem.installments } </span>
+                                </p>
+                                {
+                                    props.msg.status ? <div className={ "product__alert product__alert--" + props.msg.type }>{ props.msg.text }</div> : ('')
+                                }
                                 <p className="product__chooseSize">Escolhe seu tamanho</p>
                                 <ul className="product__sizes">
                                     {
-                                        props.productItem.sizes !== undefined ?
+                                        props.productItem.sizes.length > 0 ?
                                             props.productItem.sizes.map((size, i) => {
-                                                return (
+                                                return size.available ? (
                                                     <li key={i}>
-                                                        <input name="size" type='radio' id={'input_' + size} value={size} onChange={ this.changeSize }/>
-                                                        <label htmlFor={'input_' + size}>{size}</label>
+                                                        <input name="size" type='radio' id={'input_' + size.sku} value={ size.size + "+" + size.sku } onChange={ this.changeSize }/>
+                                                        <label htmlFor={'input_' + size.sku}>{size.size}</label>
                                                     </li>
-                                                )
+                                                ) : ('')
                                             }): ('')
                                     }
                                 </ul>

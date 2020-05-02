@@ -1,5 +1,20 @@
 .product {
   margin-top: 10px;
+  padding-bottom: 5em;
+}
+.product__alert {
+  display: inline-block;
+  float: left;
+  border-radius: 30px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  max-width: 230px;
+  width: 100%;
+}
+.product__alert--error {
+  color: #fff;
+  background-color: #e74c3c;
 }
 .product__image {
   width: 100%;
@@ -43,13 +58,13 @@
   cursor: pointer;
   border: 1px solid #e6e6e6;
   border-radius: 4px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: block;
   text-align: center;
-  line-height: 40px;
-  font-weight: 600;
-  font-size: 0.8125rem;
+  line-height: 45px;
+  font-weight: 700;
+  font-size: 0.9375em;
 }
 .product__sizes li input {
   display: none;
@@ -59,13 +74,17 @@
   background-color: #333333;
 }
 .product__button {
-  width: 100%;
+  width: 95%;
+  left: 2.5%;
+  position: fixed;
+  bottom: 0;
   padding: 15px;
   color: #fff;
   border-radius: 5px;
   margin-top: 1em;
   margin-bottom: 1.5em;
   background-color: #333333;
+  font-size: 0.875em;
   box-shadow: 1px 1px 20px 1px rgba(51, 51, 51, 0.5);
 }
 .product__button:hover {
@@ -74,7 +93,7 @@
 
 @media screen and (min-width: 728px) {
   .product__name {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
   .product__image img {
     width: 100% !important;
@@ -90,15 +109,13 @@
   .product__chooseSize {
     font-size: 0.75rem;
   }
-  .product__sizes li label {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-  }
   .product__button {
-    width: 230px;
-    padding: 8px;
+    width: 300px;
+    padding: 13.5px;
     margin-bottom: 0;
+    position: relative;
+    left: 0;
+    font-size: 1rem;
   }
 }
 

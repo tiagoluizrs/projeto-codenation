@@ -16,10 +16,10 @@ export const listResponse = (productList) => {
     }
 }
 
-export const item = (id) => {
+export const item = (name) => {
     return {
         type: PRODUCT_ITEM,
-        id
+        name
     }
 }
 

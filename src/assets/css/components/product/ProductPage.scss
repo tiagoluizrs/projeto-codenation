@@ -3,6 +3,26 @@
 
 .product{
     margin-top: 10px;
+    padding:{
+        bottom: 5em;
+    };
+
+    &__alert{
+        display: inline-block;
+        float: left;
+        border-radius: 30px;
+        padding: 5px 10px;
+        font-size: $font-12;
+        font-weight: 700;
+        max-width: 230px;
+        width: 100%;
+        &--error{
+            color: #fff;
+            background:{
+                color: $danger-color-0;
+            };
+        }
+    }
     &__image{
         width: 100%;
         img{
@@ -60,13 +80,13 @@
                 cursor: pointer;
                 border: 1px solid lighten($grey-color-1, 40);
                 border-radius: 4px;
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
                 display: block;
                 text-align: center;
-                line-height: 40px;
-                font-weight: 600;
-                font-size: $font-13;
+                line-height: 45px;
+                font-weight: 700;
+                font-size: $font-15;
             }
             input{
                 display: none;
@@ -80,7 +100,10 @@
         }
     }
     &__button{
-        width: 100%;
+        width: 95%;
+        left: 2.5%;
+        position: fixed;
+        bottom: 0;
         padding: 15px;
         color: #fff;
         border-radius: 5px;
@@ -91,6 +114,7 @@
         background: {
             color: $primary-color;
         };
+        font-size: $font-14;
         box-shadow: 1px 1px 20px 1px rgba($primary-color, 0.5);
         &:hover{
             background: {
@@ -100,25 +124,11 @@
     }
 }
 
-//@media screen and (min-width: 480px) {
-//    .product{
-//        &__image{
-//            img{
-//                width: auto !important;
-//                height: 100%;
-//                margin: 0 auto;
-//                display: inherit;
-//            }
-//        }
-//    }
-//}
-
-
 @media screen and (min-width: 728px) {
     .product {
         &__name {
             font: {
-                size: $font-16;
+                size: $font-18;
             };
         }
         &__image {
@@ -143,21 +153,15 @@
                 size: $font-12;
             };
         }
-        &__sizes {
-            li {
-                label {
-                    width: 30px;
-                    height: 30px;
-                    line-height: 30px;
-                }
-            }
-        }
         &__button {
-            width: 230px;
-            padding: 8px;
+            width: 300px;
+            padding: 13.5px;
             margin:{
                 bottom: 0;
             };
+            position: relative;
+            left: 0;
+            font-size: $font-16;
         }
     }
 }

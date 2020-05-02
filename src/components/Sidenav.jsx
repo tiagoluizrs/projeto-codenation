@@ -43,7 +43,13 @@ class Sidenav extends Component{
         var price = 0;
 
         for(let product of props.products){
-            price += product.price * product.quantity
+            let currentPrice = 0;
+            try{
+                currentPrice = parseFloat(product.price.replace('R$ ', '').replace(',', '.'));
+            }catch(e){
+                console.log(`Um erro inesperado ocorreu ao converter texto para float ${e}.`)
+            }
+            price += currentPrice * product.quantity;
         }
         return price.toFixed(2).toString().replace(".",",");
     }

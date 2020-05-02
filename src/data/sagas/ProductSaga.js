@@ -14,8 +14,8 @@ function* watchListAll(){
 }
 
 function* listItem(action){  // fixed
-    const id = action.id
-    const productItem = yield ProductService.byId(id);
+    const name = action.name;
+    const productItem = yield ProductService.byName(name);
     yield put(ProductActions.listItemResponse(productItem))
 }
 
@@ -24,9 +24,9 @@ function* watchListItem(){
 }
 
 function* searchProducts(action){  // fixed
-    const name = action.name
+    const name = action.name;
 
-    const searchList = yield ProductService.byName(name);
+    const searchList = yield ProductService.bySearchName(name);
     yield put(SearchActions.searchResponse(searchList))
 }
 
