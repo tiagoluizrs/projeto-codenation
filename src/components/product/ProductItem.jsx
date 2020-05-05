@@ -8,17 +8,13 @@ class ProductItem extends Component{
         columns: ''
     }
 
-    constructor(props){
-        super(props);
-    }
-
     render(){
         const { props } = this;
 
         return(
             <div className={"mt-2 column column__medium--6 column__large--4 column__small" + props.columns }>
                 <div className="product__item">
-                    <a href={ '/product/' + props.product.name.replace(/\ /g, "+") } className="product__link">
+                    <a href={ '/product/' + props.product.name.replace(/ /g, "+") } className="product__link">
                         <figure className="product__image">
                             {props.product.on_sale ? (
                                 <span className="product__percent">- {props.product.discount_percentage}</span>

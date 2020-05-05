@@ -8,10 +8,6 @@ class ProductListSidenav extends Component{
         type: 3
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     render(){
         const { props } = this;
         return(

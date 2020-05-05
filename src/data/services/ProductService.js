@@ -1,5 +1,4 @@
 import { ApiService } from './ApiService';
-const endpoint = 'product';
 
 export const ProductService = {
     list(){
@@ -8,7 +7,7 @@ export const ProductService = {
     async byName(name){
         let products = await ApiService.get();
         let product = (n) => products.filter(product => {
-            return product.name == n.replace(/\+/g, " ");
+            return product.name === n.replace(/\+/g, " ");
         });
         let productItem = product(name);
         if (productItem.length > 0) return productItem[0];

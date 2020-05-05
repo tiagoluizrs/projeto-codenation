@@ -59,13 +59,13 @@ class Product extends Component{
                     installments: item.installments,
                     quantity: 1,
                     size: state.sizes,
-                    sku: item.sizes.sku,
+                    sku: state.sku,
                 };
 
             if(products === null || products === undefined){
                 localStorage.setItem('products', JSON.stringify([newProduct]))
             }else{
-                let index = products.findIndex(product => product.sku === item.sku && product.size === state.sizes && product.name === state.name);
+                let index = products.findIndex(product => (product.sku === state.sku) && (product.size === state.sizes) && (product.name === item.name));
                 if(index > -1){
                     products[index].quantity++;
                 }else{

@@ -35,7 +35,7 @@ export class App extends Component{
         var data = {},
             products = JSON.parse(localStorage.getItem('products'));
 
-        switch (type) {
+        switch(type) {
             case 1:
                 data = {
                     'title': 'Buscar Produtos',
@@ -58,6 +58,14 @@ export class App extends Component{
                 data = {
                     'title': '',
                     'sideStatus': 'sidenav--hide',
+                    type,
+                    products: []
+                }
+                break;
+            default:
+                data = {
+                    'title': 'Buscar Produtos',
+                    'sideStatus': '',
                     type,
                     products: []
                 }

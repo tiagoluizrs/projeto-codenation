@@ -11,10 +11,6 @@ class ProductItemSidenav extends Component{
         type: 3
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     changeQuantity(quantity){
         const { props } = this;
         Channel.emit('changeQuantity', props.product, quantity);
@@ -27,7 +23,7 @@ class ProductItemSidenav extends Component{
         return(
             <div className="product-sidenav__item">
                     <figure className="product-sidenav__image">
-                        <a className="product-sidenav__link" href={ window.location.origin + '/product/' + props.product.name.replace(/\ /g, "+")}>
+                        <a className="product-sidenav__link" href={ window.location.origin + '/product/' + props.product.name.replace(/ /g, "+")}>
                             <img src={
                                 props.product.image === ""
                                     ? noImage

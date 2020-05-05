@@ -55,7 +55,7 @@ class Sidenav extends Component{
     }
 
     render(){
-        const { state, props } = this;
+        const { props } = this;
         return(
             <div className={'sidenav ' + props.sideStatus}>
                 <section className="sidenav__closeArea" onClick={ this.toggleSideNav.bind(this, 3) } />
